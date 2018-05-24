@@ -1,10 +1,11 @@
 provider "aws" {
-  region  = "ap-southeast-1"
   version = "1.20.0"
 }
 
 module "this" {
   source = "../../"
+
+  region = "ap-southeast-1"
 
   config_name                            = "default_config"
   config_role_arn                        = "arn:aws:iam::123456789012:role/config-role"
