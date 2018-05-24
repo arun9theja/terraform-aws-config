@@ -34,9 +34,12 @@ variable "config_delivery_frequency" {
 }
 
 variable "config_bucket_name" {
-  type = "string"
+  description = "The name of the S3 bucket used to store the configuration history."
+  type        = "string"
 }
 
 variable "is_config_enabled" {
-  type = "string"
+  description = "Whether the configuration recorder should be enabled or disabled. Defaults to true."
+  type        = "string"
+  default     = "true"
 }
