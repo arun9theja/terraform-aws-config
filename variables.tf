@@ -1,3 +1,8 @@
+variable "region" {
+  description = "Region where these resources are going to be created."
+  type        = "string"
+}
+
 variable "config_name" {
   description = "The name of the recorder. Defaults to default. Changing it recreates the resource."
   type        = "string"

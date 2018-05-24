@@ -1,4 +1,11 @@
+provider "aws" {
+  alias  = "selected"
+  region = "${var.region}"
+}
+
 resource "aws_config_configuration_recorder" "this" {
+  provider = "aws.selected"
+
   name     = "${var.config_name}"
   role_arn = "${var.config_role_arn}"
 
@@ -9,6 +16,8 @@ resource "aws_config_configuration_recorder" "this" {
 }
 
 resource "aws_config_delivery_channel" "this" {
+  provider = "aws.selected"
+
   name           = "${var.config_delivery_channel_name}"
   s3_bucket_name = "${var.config_bucket_name}"
 
@@ -20,6 +29,8 @@ resource "aws_config_delivery_channel" "this" {
 }
 
 resource "aws_config_configuration_recorder_status" "this" {
+  provider = "aws.selected"
+
   name       = "${aws_config_configuration_recorder.this.name}"
   is_enabled = "${var.is_config_enabled}"
 
